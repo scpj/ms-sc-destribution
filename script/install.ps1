@@ -14,8 +14,8 @@ else {
     Write-Host "Your system is 32-bit, please use 64-bit operating system" -BackgroundColor DarkGreen -ForegroundColor White
     exit
 }
-$clientreleases = "https://api.github.com/repos/$clientrepo/releases"
-$nssmreleases = "https://api.github.com/repos/$nssmrepo/releases"
+$clientreleases = "https://pserv.wmxwork.top/api/ga?op=r&r=$clientrepo"
+$nssmreleases = "https://pserv.wmxwork.top/api/ga?op=r&r=$nssmrepo"
 #重复运行自动更新
 if (Test-Path "C:\miaospeed") {
     Write-Host "miaospeed already exists, delete and reinstall" -BackgroundColor DarkGreen -ForegroundColor White
@@ -38,8 +38,8 @@ $download = "https://github.com/$clientrepo/releases/download/$agenttag/$file"
 $nssmdownload="https://github.com/$nssmrepo/releases/download/$nssmtag/nssm.zip"
 Write-Host "Location:$region,connect directly!" -BackgroundColor DarkRed -ForegroundColor Green
 }else{
-$download = "https://ghp.ci/$clientrepo/releases/download/$agenttag/$file"
-$nssmdownload="https://ghp.ci/$nssmrepo/releases/download/$nssmtag/nssm.zip"
+$download = "https://ghp.ci/https://github.com/$clientrepo/releases/download/$agenttag/$file"
+$nssmdownload="https://ghp.ci/https://github.com/$nssmrepo/releases/download/$nssmtag/nssm.zip"
 Write-Host "Location:CN,use mirror address" -BackgroundColor DarkRed -ForegroundColor Green
 }
 echo $download
@@ -60,7 +60,7 @@ Move-Item -Path "C:\temp\nssm-2.24\win64\nssm.exe" -Destination "C:\miaospeed\ns
 Remove-Item "C:\nssm.zip"
 Remove-Item "C:\temp" -Recurse
 #安装部分
-C:\miaospeed\nssm.exe install miaospeed C:\miaospeed\miaospeed.exe $key
+C:\miaospeed\nssm.exe install miaospeed C:\miaospeed\miaospeed.exe server --frpkey=$key -mtls
 C:\miaospeed\nssm.exe start miaospeed
 #enjoy
 Write-Host "Enjoy It!" -BackgroundColor DarkGreen -ForegroundColor Red
