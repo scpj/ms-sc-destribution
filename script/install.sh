@@ -200,6 +200,7 @@ install_miaospeed() {
     chmod +x $MS_BASE_PATH/miaospeed
 
     if [ $# -ge 1 ]; then
+        shift 1
         modify_miaospeed_config "$@"
     else
         modify_miaospeed_config 0
@@ -226,9 +227,7 @@ modify_miaospeed_config() {
         shift 1
     fi
 
-    args=""
-
-    if [ $2 = 0 ]; then
+    if [ $1 = 0 ]; then
         echo "请先记录下FRP密钥"
             printf "请输入FRP密钥: "
             read -r miaospeed_frpkey
@@ -238,7 +237,7 @@ modify_miaospeed_config() {
             return 1
         fi
     else
-        miaospeed_frpkey=$2
+        miaospeed_frpkey=$1
         shift 1
         if [ $# -gt 0 ]; then
             args="$*"
