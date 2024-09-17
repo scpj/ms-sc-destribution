@@ -402,7 +402,6 @@ show_menu() {
 }
 
 pre_check
-installation_check
 
 if [ $# -gt 0 ]; then
     case $1 in
