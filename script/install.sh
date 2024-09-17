@@ -174,7 +174,7 @@ install_miaospeed() {
 
     local version=$(curl -m 10 -sL "https://api.github.com/repos/scpj/ms-sc-destribution/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g')
     if [ ! -n "$version" ]; then
-        version=$(curl -m 10 -sL "https://pserv.wmxwork.top/api/fd?url=https://api.github.com/repos/scpj/ms-sc-destribution/releases/latest" | awk -F '"' '{for(i=1;i<=NF;i++){if($i=="tag_name"){print $(i+2)}}}')
+        version=$(curl -m 10 -sL "https://pserv.wmxwork.top/api/ga?op=rl&r=scpj/ms-sc-destribution" | awk -F '"' '{for(i=1;i<=NF;i++){if($i=="tag_name"){print $(i+2)}}}')
     fi
 
     if [ ! -n "$version" ]; then
@@ -213,7 +213,7 @@ install_miaospeed() {
 
 modify_miaospeed_config() {
     echo "> 修改miaospeed配置"
-    if [ $1 = 0 ]; then
+    if [ $# -lt 1 ]; then
         echo "请先记录下后端token"
             printf "请输入后端token: "
             read -r miaospeed_secret
@@ -227,7 +227,7 @@ modify_miaospeed_config() {
         shift 1
     fi
 
-    if [ $1 = 0 ]; then
+    if [ $# -lt 1 ]; then
         echo "请先记录下FRP密钥"
             printf "请输入FRP密钥: "
             read -r miaospeed_frpkey
