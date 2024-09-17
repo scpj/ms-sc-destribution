@@ -108,7 +108,7 @@ pre_check() {
             GITHUB_URL="github.com"
         else
             GITHUB_RAW_URL="ghp.ci/raw.githubusercontent.com/scpj/ms-sc-destribution/raw/master"
-            GITHUB_URL="ghp.ci"
+            GITHUB_URL="ghp.ci/https://github.com"
         fi
     fi
 }
@@ -197,6 +197,7 @@ install_miaospeed() {
     fi
 
     sudo mv miaospeed-sc-linux-${os_arch} $MS_BASE_PATH/miaospeed
+    chmod +x $MS_BASE_PATH/miaospeed
 
     if [ $# -ge 1 ]; then
         modify_miaospeed_config "$@"
@@ -212,8 +213,8 @@ install_miaospeed() {
 modify_miaospeed_config() {
     echo "> 修改miaospeed配置"
     if [ $1 = 0 ]; then
-        echo "请先记录下启动密钥"
-            printf "请输入启动密钥: "
+        echo "请先记录下后端token"
+            printf "请输入后端token: "
             read -r miaospeed_secret
         if [ -z "$miaospeed_secret" ]; then
             err "选项不能为空"
@@ -223,10 +224,25 @@ modify_miaospeed_config() {
     else
         miaospeed_secret=$1
         shift 1
+    fi
+
+    args=""
+
+    if [ $2 = 0 ]; then
+        echo "请先记录下FRP密钥"
+            printf "请输入FRP密钥: "
+            read -r miaospeed_frpkey
+        if [ -z "$miaospeed_frpkey" ]; then
+            err "选项不能为空"
+            before_show_menu
+            return 1
+        fi
+    else
+        miaospeed_frpkey=$2
+        shift 1
         if [ $# -gt 0 ]; then
             args="$*"
         fi
-    fi
 
     cat > "/etc/systemd/system/miaospeed.service" <<EOF
 [Unit]
@@ -237,7 +253,7 @@ ConditionFileIsExecutable=${MS_BASE_PATH}/miaospeed
 [Service]
 StartLimitInterval=5
 StartLimitBurst=10
-ExecStart=${MS_BASE_PATH}/miaospeed ${miaospeed_secret}
+ExecStart=${MS_BASE_PATH}/miaospeed server --token ${miaospeed_secret} --frpkey ${miaospeed_frpkey} -mtls
 WorkingDirectory=/root
 Restart=always
 
