@@ -211,8 +211,7 @@ install_miaospeed() {
 
 modify_miaospeed_config() {
     echo "> 修改miaospeed配置"
-
-    if [ $# -lt 1 ]; then
+    if [ $1 = 0 ]; then
         echo "请先记录下启动密钥"
             printf "请输入启动密钥: "
             read -r miaospeed_secret
@@ -302,7 +301,7 @@ restart_miaospeed() {
     fi
 }
 
-show_agent_log() {
+show_miaospeed_log() {
     echo "> 获取miaospeed日志"
 
     if [ "$os_alpine" != 1 ]; then
@@ -322,7 +321,7 @@ clean_all() {
     fi
 }
 
-uninstall_agent() {
+uninstall_miaospeed() {
     echo "> 卸载miaospeed"
 
     sudo systemctl stop miaospeed
