@@ -242,6 +242,7 @@ modify_miaospeed_config() {
         if [ $# -gt 0 ]; then
             args="$*"
         fi
+    fi
 
     cat > "/etc/systemd/system/miaospeed.service" <<EOF
 [Unit]
