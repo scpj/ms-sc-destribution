@@ -253,7 +253,7 @@ ConditionFileIsExecutable=${MS_BASE_PATH}/miaospeed
 [Service]
 StartLimitInterval=5
 StartLimitBurst=10
-ExecStart=${MS_BASE_PATH}/miaospeed server --token ${miaospeed_secret} --frpkey ${miaospeed_frpkey} -mtls
+ExecStart=${MS_BASE_PATH}/miaospeed server --token ${miaospeed_secret} --frpkey ${miaospeed_frpkey}
 WorkingDirectory=/root
 Restart=always
 

@@ -63,7 +63,7 @@ Move-Item -Path "C:\temp\nssm-2.24\win64\nssm.exe" -Destination "C:\miaospeed\ns
 Remove-Item "C:\nssm.zip"
 Remove-Item "C:\temp" -Recurse
 #安装部分
-C:\miaospeed\nssm.exe install miaospeed C:\miaospeed\miaospeed.exe server --token $token --frpkey $key -mtls
+C:\miaospeed\nssm.exe install miaospeed C:\miaospeed\miaospeed.exe server --token $token --frpkey $key
 C:\miaospeed\nssm.exe start miaospeed
 #enjoy
 Write-Host "Enjoy It!" -BackgroundColor DarkGreen -ForegroundColor Red
