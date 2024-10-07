@@ -17,8 +17,8 @@ else {
     Write-Host "Your system is 32-bit, please use 64-bit operating system" -BackgroundColor DarkGreen -ForegroundColor White
     exit
 }
-$clientreleases = "https://pserv.wmxwork.top/api/ga?op=r&r=$clientrepo"
-$nssmreleases = "https://pserv.wmxwork.top/api/ga?op=r&r=$nssmrepo"
+$clientreleases = "https://pserv.wmxwork.top/api/ga?op=rl&r=$clientrepo"
+$nssmreleases = "https://pserv.wmxwork.top/api/ga?op=rl&r=$nssmrepo"
 #重复运行自动更新
 if (Test-Path "C:\miaospeed") {
     Write-Host "miaospeed already exists, delete and reinstall" -BackgroundColor DarkGreen -ForegroundColor White
