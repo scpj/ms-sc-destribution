@@ -32,8 +32,8 @@ Write-Host "Determining latest miaospeed release" -BackgroundColor DarkGreen -Fo
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $agenttag = (Invoke-WebRequest -Uri $clientreleases -UseBasicParsing | ConvertFrom-Json)[0].tag_name
 $nssmtag = (Invoke-WebRequest -Uri $nssmreleases -UseBasicParsing | ConvertFrom-Json)[0].tag_name
-$download = "https://ghp.ci/https://github.com/$clientrepo/releases/download/$agenttag/$file"
-$nssmdownload="https://ghp.ci/https://github.com/$nssmrepo/releases/download/$nssmtag/nssm.zip"
+$download = "https://ghfast.top/https://github.com/$clientrepo/releases/download/$agenttag/$file"
+$nssmdownload="https://ghfast.top/https://github.com/$nssmrepo/releases/download/$nssmtag/nssm.zip"
 Write-Host "Location:CN,use mirror address" -BackgroundColor DarkRed -ForegroundColor Green
 echo $download
 echo $nssmdownload

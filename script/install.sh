@@ -107,8 +107,8 @@ pre_check() {
             GITHUB_RAW_URL="raw.githubusercontent.com/scpj/ms-sc-destribution/master"
             GITHUB_URL="github.com"
         else
-            GITHUB_RAW_URL="ghp.ci/raw.githubusercontent.com/scpj/ms-sc-destribution/raw/master"
-            GITHUB_URL="ghp.ci/https://github.com"
+            GITHUB_RAW_URL="ghfast.top/raw.githubusercontent.com/scpj/ms-sc-destribution/raw/master"
+            GITHUB_URL="ghfast.top/https://github.com"
         fi
     fi
 }

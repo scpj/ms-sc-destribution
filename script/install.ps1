@@ -41,8 +41,8 @@ $download = "https://github.com/$clientrepo/releases/download/$agenttag/$file"
 $nssmdownload="https://github.com/$nssmrepo/releases/download/$nssmtag/nssm.zip"
 Write-Host "Location:$region,connect directly!" -BackgroundColor DarkRed -ForegroundColor Green
 }else{
-$download = "https://ghp.ci/https://github.com/$clientrepo/releases/download/$agenttag/$file"
-$nssmdownload="https://ghp.ci/https://github.com/$nssmrepo/releases/download/$nssmtag/nssm.zip"
+$download = "https://ghfast.top/https://github.com/$clientrepo/releases/download/$agenttag/$file"
+$nssmdownload="https://ghfast.top/https://github.com/$nssmrepo/releases/download/$nssmtag/nssm.zip"
 Write-Host "Location:CN,use mirror address" -BackgroundColor DarkRed -ForegroundColor Green
 }
 echo $download
